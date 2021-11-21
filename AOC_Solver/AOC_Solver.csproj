@@ -8,4 +8,19 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.38" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AOC.Common\AOC.Common.csproj" />
+    <ProjectReference Include="..\AOC_2016\AOC_2016.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="preBuild.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
