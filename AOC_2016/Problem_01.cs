@@ -11,8 +11,6 @@ namespace AOC_2016
 {
   public enum Direction { N, E, S, W}
 
-
-
   public struct Position
   {
     public Direction Facing { get; set; }
@@ -23,15 +21,40 @@ namespace AOC_2016
     {
       return $"({this.X}, {this.Y} ) facing {(Direction) this.Facing}";
     }
+
+    public Point ToPoint()
+    {
+      return new Point(this.X, this.Y);
+    }
+
+
   }
+
+  public class LineSegment 
+  {
+    public int X1 { get; set; }
+    public int Y1 { get; set; }
+
+    public int X0 { get; set; }
+    public int Y0 { get; set; }
+
+    //public decimal A => (this.Y0 - this.Y1);
+    //public decimal B => -(this.X0 - this.X1);
+    //public decimal C => (this.X0 - this.X1) * this.Y0 - (this.Y0 - this.Y1) * this.X0;
+
+  }
+
+
+
 
   public class Problem_01 : IProblem
   {
     public int Day() => 1;
-    private Position _position = new();
-    private List<Position> Positions { get; set; } = new List<Position>();
 
-    //private Dictionary<Direction, int> Frontier = new();
+    private Position _position = new();
+    private List<Position> Positions { get; set; } = new();
+    private List<LineSegment> LineSegments { get; set; } = new();
+
 
     private void Move(Tuple<string, string> instruction)
     {
@@ -118,9 +141,29 @@ namespace AOC_2016
 
     private string Solve_Part2(string input)
     {
+      //for (int i = 0; i < this.Positions.Count; i += 2)
+      //{
+      //  this.LineSegments.Add( this.GetLineSegment(this.Positions[i], this.Positions[i+1]) );
+      //}
 
+      //var l1 = this.GetLineSegment(0, 0, 8, 0);
+      //var l2 = this.GetLineSegment(4, -4, 4, 4);
+      //var isIntersecting = l1.IsIntersecting(l2);
+      //var result = l1.Intersection(l2);
 
-      return 0.ToString();
+      //return $"{isIntersecting} {result}";
+
+      return Utils.DoIntersect(new Point(0, 0), new Point(8, 0), new Point(4, -4), new Point(4, 4)) ? "YES" : "NO";
+    }
+
+    private LineSegment GetLineSegment(int x0, int y0, int x1, int y1)
+    {
+      return new LineSegment { X0 = x1, Y0 = y0, X1 = x1, Y1 = y1 };
+    }
+
+    private LineSegment GetLineSegment(Position p0, Position p1)
+    {
+      return new LineSegment { X0 = p0.X, Y0 = p0.Y, X1 = p1.X, Y1 = p1.Y };
     }
 
     public string Log() 

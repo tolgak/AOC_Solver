@@ -192,7 +192,7 @@
       this.txtSolution.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.txtSolution.Location = new System.Drawing.Point(90, 204);
       this.txtSolution.Name = "txtSolution";
-      this.txtSolution.Size = new System.Drawing.Size(125, 27);
+      this.txtSolution.Size = new System.Drawing.Size(476, 27);
       this.txtSolution.TabIndex = 5;
       // 
       // frmMain
