@@ -10,6 +10,6 @@ namespace AOC.Common
   {
     int Day();
     string Solve(int part, string input);
-    string Log();
+    string Log(int part);
   }
 }

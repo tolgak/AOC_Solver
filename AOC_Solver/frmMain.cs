@@ -53,7 +53,7 @@ namespace AOC_Solver
       txtLog.Clear(); 
       txtSolution.Text = solution;
 
-      txtLog.AppendText( problem.Log() );
+      txtLog.AppendText( problem.Log(part) );
     }
 
 
