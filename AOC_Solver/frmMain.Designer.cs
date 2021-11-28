@@ -49,12 +49,13 @@
       // 
       this.txtLog.BackColor = System.Drawing.Color.Black;
       this.txtLog.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.txtLog.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
       this.txtLog.ForeColor = System.Drawing.Color.Lime;
-      this.txtLog.Location = new System.Drawing.Point(2, 249);
+      this.txtLog.Location = new System.Drawing.Point(2, 297);
       this.txtLog.Multiline = true;
       this.txtLog.Name = "txtLog";
       this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-      this.txtLog.Size = new System.Drawing.Size(842, 265);
+      this.txtLog.Size = new System.Drawing.Size(731, 447);
       this.txtLog.TabIndex = 6;
       // 
       // label1
@@ -190,7 +191,7 @@
       // txtSolution
       // 
       this.txtSolution.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.txtSolution.Location = new System.Drawing.Point(90, 204);
+      this.txtSolution.Location = new System.Drawing.Point(90, 207);
       this.txtSolution.Name = "txtSolution";
       this.txtSolution.Size = new System.Drawing.Size(476, 27);
       this.txtSolution.TabIndex = 5;
@@ -199,7 +200,7 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(846, 516);
+      this.ClientSize = new System.Drawing.Size(735, 746);
       this.Controls.Add(this.txtSolution);
       this.Controls.Add(this.label5);
       this.Controls.Add(this.spinPart);

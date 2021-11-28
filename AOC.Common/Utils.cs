@@ -6,14 +6,38 @@ using System.Threading.Tasks;
 
 namespace AOC.Common
 {
+
+  public static class Matrix<T>
+  {
+    public static T[,] TransposeMatrix(T[,] matrix)
+    {
+      var rows = matrix.GetLength(0);
+      var columns = matrix.GetLength(1);
+
+      var result = new T[columns, rows];
+      for (var c = 0; c < columns; c++)
+      {
+        for (var r = 0; r < rows; r++)
+        {
+          result[c, r] = matrix[r, c];
+        }
+      }
+
+      return result;
+    }
+  }
+
+
   public static class Utils
   {
+    private static readonly char[] trimChars = { '\r', '\n', ' ' };
+
     public static int ToIntDef(this string x, int defaultValue = 0)
     {
       if (string.IsNullOrEmpty(x))
         return defaultValue;
 
-      return int.TryParse(x, out int value) ? value : defaultValue;
+      return int.TryParse(x.TrimEnd(trimChars).TrimStart(trimChars), out int value) ? value : defaultValue;
     }
 
     // https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect
