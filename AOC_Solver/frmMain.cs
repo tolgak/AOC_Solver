@@ -14,7 +14,7 @@ namespace AOC_Solver
     public frmMain()
     {
       InitializeComponent();
-      var path = Path.GetDirectoryName( Assembly.GetEntryAssembly().Location);
+      var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
       _solver = Assembly.LoadFrom($"{path}\\AOC_2016.dll");
     }
 

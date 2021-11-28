@@ -10,8 +10,6 @@ namespace AOC_2016
 {
   public class Problem_03 : IProblem
   {
-    private readonly char[] trimChars = { '\r', '\n', ' ' };
-
     public StringBuilder _logger = new();
     public int Day() => 3;
 
@@ -88,7 +86,7 @@ namespace AOC_2016
     }
 
 
-    private int[] MakeIntArray(string entry) => entry.Split(trimChars, StringSplitOptions.TrimEntries)
+    private int[] MakeIntArray(string entry) => entry.Split(Utils.trimChars, StringSplitOptions.TrimEntries)
                                                      .Select(x => x.ToIntDef(-99999))
                                                      .Where(x => x > 0)
                                                      .ToArray();

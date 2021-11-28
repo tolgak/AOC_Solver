@@ -70,7 +70,7 @@ namespace AOC_2016
     public string Solve(int part, string input)
     {
       _logger.Clear();
-      var digits = input.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+      var digits = input.Split(Utils.trimChars, StringSplitOptions.TrimEntries);
 
       if (part == 1)
         return this.Solve_Part1(digits);

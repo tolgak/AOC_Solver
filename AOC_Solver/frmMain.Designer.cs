@@ -51,11 +51,11 @@
       this.txtLog.Dock = System.Windows.Forms.DockStyle.Bottom;
       this.txtLog.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
       this.txtLog.ForeColor = System.Drawing.Color.Lime;
-      this.txtLog.Location = new System.Drawing.Point(2, 297);
+      this.txtLog.Location = new System.Drawing.Point(2, 327);
       this.txtLog.Multiline = true;
       this.txtLog.Name = "txtLog";
       this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-      this.txtLog.Size = new System.Drawing.Size(731, 447);
+      this.txtLog.Size = new System.Drawing.Size(737, 447);
       this.txtLog.TabIndex = 6;
       // 
       // label1
@@ -82,11 +82,12 @@
       // 
       this.txtInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.txtInput.Location = new System.Drawing.Point(90, 86);
+      this.txtInput.MaxLength = 100000;
       this.txtInput.Multiline = true;
       this.txtInput.Name = "txtInput";
       this.txtInput.PlaceholderText = "Paste input here";
       this.txtInput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-      this.txtInput.Size = new System.Drawing.Size(476, 106);
+      this.txtInput.Size = new System.Drawing.Size(476, 172);
       this.txtInput.TabIndex = 3;
       // 
       // label2
@@ -182,7 +183,7 @@
       // label5
       // 
       this.label5.AutoSize = true;
-      this.label5.Location = new System.Drawing.Point(16, 209);
+      this.label5.Location = new System.Drawing.Point(16, 266);
       this.label5.Name = "label5";
       this.label5.Size = new System.Drawing.Size(64, 20);
       this.label5.TabIndex = 13;
@@ -191,7 +192,7 @@
       // txtSolution
       // 
       this.txtSolution.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.txtSolution.Location = new System.Drawing.Point(90, 207);
+      this.txtSolution.Location = new System.Drawing.Point(90, 264);
       this.txtSolution.Name = "txtSolution";
       this.txtSolution.Size = new System.Drawing.Size(476, 27);
       this.txtSolution.TabIndex = 5;
@@ -200,7 +201,7 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(735, 746);
+      this.ClientSize = new System.Drawing.Size(741, 776);
       this.Controls.Add(this.txtSolution);
       this.Controls.Add(this.label5);
       this.Controls.Add(this.spinPart);

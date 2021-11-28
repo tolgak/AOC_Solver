@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace AOC.Common
 {
 
+
   public static class Matrix<T>
   {
     public static T[,] TransposeMatrix(T[,] matrix)
@@ -45,7 +46,7 @@ namespace AOC.Common
 
   public static class Utils
   {
-    private static readonly char[] trimChars = { '\r', '\n', ' ' };
+    public static readonly char[] trimChars = { '\r', '\n', ' ' };
 
     public static int ToIntDef(this string x, int defaultValue = 0)
     {
