@@ -52,6 +52,7 @@
       this.txtLog.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
       this.txtLog.ForeColor = System.Drawing.Color.Lime;
       this.txtLog.Location = new System.Drawing.Point(2, 327);
+      this.txtLog.MaxLength = 100000;
       this.txtLog.Multiline = true;
       this.txtLog.Name = "txtLog";
       this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;

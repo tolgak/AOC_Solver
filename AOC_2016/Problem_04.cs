@@ -16,7 +16,7 @@ namespace AOC_2016
 
     public override string ToString()
     {
-      return $"Name: {this.Name} Id: {this.Id} Chacecksum: {this.Checksum} Computed: {this.ComputedChecksum}";
+      return $"Name: {this.Name} Id: {this.Id} Chacecksum: {this.Checksum} Decripted: {this.DecryptedName}";
     }
 
     private string _cc = string.Empty;
@@ -44,17 +44,21 @@ namespace AOC_2016
     private string DecryptName()
     {
       var asciiBytes = Encoding.ASCII.GetBytes(this.Name.Replace("-", " "));
-      var asciiIncremented = asciiBytes.Select(x => x switch {
-        122 => 97,
-        32 => 32,
-         _ => x + (this.Id % 26)});
+      var asciiIncremented = asciiBytes.Select(x => this.Shift(x, this.Id));
 
       var decrypted = string.Join("", asciiIncremented.Select(x => (char) x));
       return decrypted;
     }
 
 
-    //private char Shift()
+    private byte Shift(byte x, int step)
+    {
+      if (x == 32)
+        return x;
+
+      var m = step % 26;
+      return x + m > 122 ? (byte)(x + m - 26) : (byte)(x + m);
+    }
 
     public bool Valid => this.Checksum == ComputedChecksum;
 
@@ -111,8 +115,6 @@ namespace AOC_2016
       return $"{summedId}";
     }
 
-
-
     private string Solve_Part2(string[] roomLabels)
     {
       List<Room> rooms = new();
@@ -127,11 +129,11 @@ namespace AOC_2016
         }).ToList();
         rooms.AddRange(room);
       }
-      rooms.ToList().ForEach(x => _logger.AppendLine(x.DecryptedName));
-      rooms.Where(x => x.Valid).ToList().ForEach( x => _logger.AppendLine(x.DecryptedName));
-      var summedId = rooms.Where(x => x.Valid).Sum(x => x.Id);
+      rooms.ToList().ForEach(x => _logger.AppendLine($"{x.Id} - {x.DecryptedName}"));
+      var result = rooms.FirstOrDefault(x => x.Valid && x.DecryptedName.Contains("northpole"));
+      
 
-      return $"{summedId}";
+      return result?.ToString() ?? "not found";
     }
 
   }
