@@ -30,7 +30,8 @@ namespace AOC_Solver
 
     private async void btnDownload_Click(object sender, EventArgs e)
     {
-      var url = "https://adventofcode.com/2016/day/1";
+      var day = (int) spinDay.Value;
+      var url = $"https://adventofcode.com/2016/day/{day}";
       var web = new HtmlWeb();
       var doc = await web.LoadFromWebAsync(url);
       var node = doc.DocumentNode.SelectSingleNode("//article[@class='day-desc']");

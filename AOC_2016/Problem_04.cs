@@ -19,7 +19,42 @@ namespace AOC_2016
       return $"Name: {this.Name} Id: {this.Id} Chacecksum: {this.Checksum} Computed: {this.ComputedChecksum}";
     }
 
-    public string ComputedChecksum => this.ComputeChecksum();
+    private string _cc = string.Empty;
+    public string ComputedChecksum
+    {
+      get
+      {
+        if (string.IsNullOrEmpty(_cc))
+          _cc = this.ComputeChecksum();
+        return _cc;
+      }
+    }
+
+    private string _dn = string.Empty;
+    public string DecryptedName
+    { 
+      get 
+      { 
+        if (string.IsNullOrEmpty(_dn)) 
+          _dn = this.DecryptName(); 
+        return _dn; 
+      } 
+    }
+
+    private string DecryptName()
+    {
+      var asciiBytes = Encoding.ASCII.GetBytes(this.Name.Replace("-", " "));
+      var asciiIncremented = asciiBytes.Select(x => x switch {
+        122 => 97,
+        32 => 32,
+         _ => x + (this.Id % 26)});
+
+      var decrypted = string.Join("", asciiIncremented.Select(x => (char) x));
+      return decrypted;
+    }
+
+
+    //private char Shift()
 
     public bool Valid => this.Checksum == ComputedChecksum;
 
@@ -63,11 +98,7 @@ namespace AOC_2016
 
     private string Solve_Part1(string[] roomLabels)
     {
-      //var cntValid = 0;
-      //var cntInvalid = 0;
-
       List<Room> rooms = new();
-
       foreach (var label in roomLabels)
       {
         var m = Regex.Matches(label, @"(?<name>[\w-]+)-(?<id>\d+)\[(?<checksum>\w*)\]");
@@ -82,9 +113,25 @@ namespace AOC_2016
 
 
 
-    private string Solve_Part2(string[] triangles)
+    private string Solve_Part2(string[] roomLabels)
     {
-      throw new NotImplementedException();
+      List<Room> rooms = new();
+      foreach (var label in roomLabels)
+      {
+        var m = Regex.Matches(label, @"(?<name>[\w-]+)-(?<id>\d+)\[(?<checksum>\w*)\]");
+        var room = m.Select(x => new Room()
+        {
+          Name = x.Groups["name"].Value,
+          Id = x.Groups["id"].Value.ToIntDef(),
+          Checksum = x.Groups["checksum"].Value
+        }).ToList();
+        rooms.AddRange(room);
+      }
+      rooms.ToList().ForEach(x => _logger.AppendLine(x.DecryptedName));
+      rooms.Where(x => x.Valid).ToList().ForEach( x => _logger.AppendLine(x.DecryptedName));
+      var summedId = rooms.Where(x => x.Valid).Sum(x => x.Id);
+
+      return $"{summedId}";
     }
 
   }
